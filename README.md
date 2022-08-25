@@ -1,5 +1,65 @@
 # Obey The Testing Goat - 21st August 2022
 
+# Lesson 001 B
+Create a standard test file and name it functional_tests.py
+
+We will use firefox for this test
+```
+import time
+from selenium import webdriver
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
+import unittest
+
+
+class NewUserTest(unittest.TestCase):
+
+    def setUp(self) -> None:
+        self.driver4FirefoxBrowser = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+
+    def tearDown(self) -> None:
+        self.driver4FirefoxBrowser.quit()
+
+    def test_can_enter_two_numbers_and_get_sum(self):
+        self.driver4FirefoxBrowser.get('http://localhost:8000')
+        self.assertIn('Calculator',self.driver4FirefoxBrowser.title)
+        self.fail('Complete the test')
+
+if __name__ == '__main__'        :
+    unittest.main()
+
+
+```
+Execute this file by keying in
+```
+python functional_tests.py
+```
+
+# Lesson 001
+How to setup and run django project ?
+
+First create a fresh branch
+```
+git checkout -b users/krk/20220821_create_django_project
+```
+
+In the virtual environment run the following command to create a new project with the name Calculator. Note the DOT at the end to create it in the current folder
+
+```
+django-admin startproject calculator .
+
+```
+
+Run the server in a separate terminal window.
+
+Note by default the new terminal will open the virtual environment. If not please go ahead and activate the virtual env before running the following command to start the calculator project.
+
+```
+python manage.py runserver
+```
+Open any browser and visit http://localhost:8000 to find a default django project running.
+
+Note: 127.0.0.1 and localhost are the same. Its your local machine.
 
 # Branch first.. Basic Git commands
 
